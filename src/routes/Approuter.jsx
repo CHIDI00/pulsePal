@@ -12,7 +12,7 @@ export default function Approuter() {
       <ScrollToTop />
       <Routes>
         <Route element={<AppLayout />}>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<Dashboard_page />} />
           <Route path="dashboard" element={<Dashboard_page />} />
           <Route path="/assistant" element={<Assistant />} />
           <Route path="/settings" element={<Settings />} />

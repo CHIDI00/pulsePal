@@ -23,7 +23,7 @@ import { BiWalk } from "react-icons/bi";
 const VitalCards = () => {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-      <div className="flex flex-col w-full gap-10 p-16 bg-white border-l-4 border-blue-600 rounded-3xl">
+      <div className="flex flex-col w-full gap-10 p-16 bg-white border-l-4 border-blue-600 rounded-3xl hover:-translate-y-4 hover:shadow-lg">
         <div className="flex items-center justify-start gap-3 text-2xl font-semibold">
           <Moon className="text-2xl font-semibold text-blue-600" />
           Sleep
@@ -45,7 +45,7 @@ const VitalCards = () => {
         </div>
       </div>
 
-      <div className="flex flex-col w-full gap-10 p-16 bg-white border-l-4 border-green-600 rounded-3xl">
+      <div className="flex flex-col w-full gap-10 p-16 bg-white border-l-4 border-green-600 rounded-3xl hover:-translate-y-1 hover:shadow-lg">
         <div className="flex items-center justify-start gap-3 text-2xl font-semibold">
           <Droplets className="text-2xl font-semibold text-green-600" />
           Hydration
@@ -67,7 +67,7 @@ const VitalCards = () => {
         </div>
       </div>
 
-      <div className="flex flex-col w-full gap-10 p-16 bg-white border-l-4 border-red-600 rounded-3xl">
+      <div className="flex flex-col w-full gap-10 p-16 bg-white border-l-4 border-red-600 rounded-3xl hover:-translate-y-1 hover:shadow-lg">
         <div className="flex items-center justify-start gap-3 text-2xl font-semibold">
           <Heart className="text-2xl font-semibold text-red-600" />
           Heart Rate
@@ -89,7 +89,7 @@ const VitalCards = () => {
         </div>
       </div>
 
-      <div className="flex flex-col w-full gap-10 p-16 bg-white border-l-4 border-purple-600 rounded-3xl">
+      <div className="flex flex-col w-full gap-10 p-16 bg-white border-l-4 border-purple-600 rounded-3xl hover:-translate-y-1 hover:shadow-lg">
         <div className="flex items-center justify-start gap-3 text-2xl font-semibold">
           <GrSteps className="text-2xl font-semibold text-purple-600" />
           Steps
