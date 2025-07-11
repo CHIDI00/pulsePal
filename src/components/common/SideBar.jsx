@@ -7,7 +7,7 @@ export default function SideBar() {
         <div className="flex items-center gap-10 p-6 bg-green rounded-xl">
           <CiHeart className="p-2 text-white rounded-full text-7xll bg-gradient-to-tr from-green to-greendark" />
           <div className="space-y-2">
-            <h3 className="text-3xl font-semibold">welcome back</h3>
+            <h3 className="text-3xl font-semibold">welcome back!</h3>
             <p className="text-[1.7rem] normal-case font-medium">Alex Joshson</p>
           </div>
         </div>
