@@ -5,9 +5,9 @@ import { VscRobot } from "react-icons/vsc";
 
 export default function SideBar() {
   return (
-    <sidebar className="fixed top-0 bottom-0 left-0 right-0 h-screen bg-gray-50 !px-3 z-10 shadow-xl w-fit section">
+    <div className="fixed top-0 left-0 h-screen bg-gray-50 !px-3 z-10 shadow-xl w-fit section">
       <div className="flex flex-col justify-between h-full px-16 space-y-20 w-fit">
-        <div className="flex items-center gap-10 px-10 py-6 bg-green-100 rounded-xl">
+        <div className="flex items-center gap-10 px-10 py-6 bg-green-50 rounded-xl">
           <CiHeart className="p-2 text-white rounded-full text-7xl bg-gradient-to-tr from-green-500 to-green-200" />
           <div className="space-y-2">
             <h3 className="text-3xl font-semibold">welcome back!</h3>
@@ -41,6 +41,6 @@ export default function SideBar() {
           </div>
         </div>
       </div>
-    </sidebar>
+    </div>
   );
 }
