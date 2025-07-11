@@ -1,15 +1,21 @@
-import Footer from "../components/common/Footer";
 import Header from "../components/common/Header";
 import { Outlet } from "react-router-dom";
+import SideBar from "../components/common/SideBar";
 
 export default function AppLayout() {
   return (
     <div className="w-full m-auto max-w-[185rem]">
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-      <Footer />
+      <div className="flex items-start w-full">
+        <div className="md:flex-[2] w-full">
+          <SideBar />
+        </div>
+        <div className="md:flex-[8] bg-red-700 w-full">
+          <Header />
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      </div>
     </div>
   );
 }
