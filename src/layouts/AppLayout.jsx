@@ -9,7 +9,7 @@ export default function AppLayout() {
         <div className="md:flex-[2] w-full">
           <SideBar />
         </div>
-        <div className="md:flex-[8] bg-red-700 w-full">
+        <div className="md:flex-[8] w-full">
           <Header />
           <main>
             <Outlet />
