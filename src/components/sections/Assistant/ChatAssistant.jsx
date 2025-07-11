@@ -2,17 +2,49 @@ import { FaTelegramPlane, FaUserCircle } from "react-icons/fa";
 import { VscRobot } from "react-icons/vsc";
 import { useState, useRef, useEffect } from "react";
 
+// Default messages for initial state
+const defaultMessages = [
+  {
+    sender: "bot",
+    text: "Hi Alex! I noticed you've been getting less sleep lately. How are you feeling today?",
+    time: "01:25 PM",
+  },
+];
+
+// Helper function to load messages from localStorage
+const loadMessages = () => {
+  const savedData = localStorage.getItem("chatMessages");
+  if (!savedData) return defaultMessages;
+
+  try {
+    const { timestamp, messages } = JSON.parse(savedData);
+    // Clear messages older than 24 hours
+    if (Date.now() - timestamp > 24 * 60 * 60 * 1000) {
+      localStorage.removeItem("chatMessages");
+      return defaultMessages;
+    }
+    return messages;
+  } catch {
+    return defaultMessages;
+  }
+};
+
 export default function ChatAssistant() {
-  const [messages, setMessages] = useState([
-    {
-      sender: "bot",
-      text: "Hi Alex! I noticed you've been getting less sleep lately. How are you feeling today?",
-      time: "01:25 PM",
-    },
-  ]);
+  const [messages, setMessages] = useState(loadMessages());
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
+
+  // Save messages to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem(
+      "chatMessages",
+      JSON.stringify({
+        messages,
+        timestamp: Date.now(),
+      })
+    );
+  }, [messages]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -37,12 +69,11 @@ export default function ChatAssistant() {
     setIsLoading(true);
 
     try {
-      // Solution 1: Direct API call with CORS mode (production)
       const apiUrl = "https://pulsepal.vercel.app/api/ai";
 
       const response = await fetch(apiUrl, {
         method: "POST",
-        mode: "cors", // Essential for CORS
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -56,11 +87,10 @@ export default function ChatAssistant() {
 
       const data = await response.json();
 
-      // Add bot response - using the actual API response structure
       const botMessage = {
         sender: "bot",
-        text: data.response, // Using the response field from your API
-        healthData: data.healthDataUsed, // Optional: include health data
+        text: data.response,
+        healthData: data.healthDataUsed,
         time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
       };
 
@@ -96,19 +126,29 @@ export default function ChatAssistant() {
     }
   };
 
+  const clearChatHistory = () => {
+    localStorage.removeItem("chatMessages");
+    setMessages(defaultMessages);
+  };
+
   return (
     <div className="w-full h-screen p-16 transition-transform duration-300 bg-white rounded-2xl hover:-translate-y-4">
       <div className="flex flex-col justify-between h-full pb-10">
         <div className="space-y-12 max-h-[70vh]">
-          <h3 className="flex items-center text-5xl font-semibold text-nowrap gap-7">
-            <VscRobot className="text-blue-500 text-7xl" />
-            AI Wellness Assistant
-          </h3>
+          <div className="flex justify-between items-center">
+            <h3 className="flex items-center text-5xl font-semibold text-nowrap gap-7">
+              <VscRobot className="text-blue-500 text-7xl" />
+              AI Wellness Assistant
+            </h3>
+            <button onClick={clearChatHistory} className="px-4 py-2 bg-red-500 text-white rounded-lg text-xl">
+              Clear History
+            </button>
+          </div>
 
           <div
             className="space-y-8 overflow-y-auto w-full max-h-[70vh] 
                 scrollbar-thin scrollbar-thumb-green-400 scrollbar-track-gray-100
-                pr-10" // Add right padding to prevent content clipping
+                pr-10"
             style={{
               scrollbarWidth: "thin",
               scrollbarColor: "#4ade80 #f3f4f6",
@@ -129,7 +169,7 @@ export default function ChatAssistant() {
                       message.sender === "bot" ? "bg-gray-100" : "text-white bg-gradient-to-tr from-green-500 to-green-300"
                     }`}
                   >
-                    <p className="text-3xl font-medium normal-case">{message.text}</p>
+                    <p className="text-3xl font-medium normal-case break-words whitespace-pre-wrap">{message.text}</p>
                     <br />
                     <small className="text-2xl">{message.time}</small>
                   </div>

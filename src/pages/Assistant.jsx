@@ -1,6 +1,6 @@
-import ChatAssistant from "../components/sections/Assistant/ChatAssistant";
-import HealthData from "../components/sections/Assistant/HealthData";
-import QuickActions from "../components/sections/Assistant/QuickActions";
+import ChatAssistant from "../components/sections/assistant/ChatAssistant";
+import HealthData from "../components/sections/assistant/HealthData";
+import QuickActions from "../components/sections/assistant/QuickActions";
 
 export default function Assistant() {
   return (
