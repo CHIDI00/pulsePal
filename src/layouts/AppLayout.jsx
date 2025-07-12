@@ -11,7 +11,7 @@ export default function AppLayout() {
         </div>
         <div className="md:flex-[8] w-full">
           <Header />
-          <main className="w-full h-full !pt-20 bg-green-100 section-page">
+          <main className="w-full h-full !py-10 bg-green-100 section-page">
             <Outlet />
           </main>
         </div>
