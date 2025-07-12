@@ -16,7 +16,7 @@ PulsePal is a personal health dashboard application designed to help users monit
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/pulsepal.git
+   git clone https://github.com/CHIDI00/pulsePal.git
    cd pulsepal
    ```
 
