@@ -5,8 +5,6 @@ import { VscRobot } from "react-icons/vsc";
 import { NavLink } from "react-router-dom";
 
 export default function SideBar() {
-  // const isMobile = window.matchMedia("only screen and (max-width: 768px)").matches;
-
   return (
     <div className="fixed top-0 left-0 h-screen bg-gray-50 !px-3 z-10 shadow-xl w-fit section">
       <div className="flex flex-col justify-between h-full px-16 space-y-20 w-fit">

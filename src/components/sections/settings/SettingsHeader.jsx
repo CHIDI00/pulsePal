@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
 import ProfileSettings from "./ProfileSettings";
 import HealthSettings from "./HealthSettings";
+import PrivacySettings from "./PrivacySettings";
 
 export default function SettingsHeader() {
   const [activeTab, setActiveTab] = useState("profile");
@@ -10,12 +11,12 @@ export default function SettingsHeader() {
     switch (activeTab) {
       case "profile":
         return <ProfileSettings />;
-      case "notifications":
-        return <div>Notifications settings coming soon.</div>;
+      // case "notifications":
+      //   return <div>Notifications settings coming soon.</div>;
       case "health":
         return <HealthSettings />;
       case "privacy":
-        return <div>Privacy settings coming soon.</div>;
+        return <PrivacySettings />;
       default:
         return null;
     }
@@ -30,8 +31,8 @@ export default function SettingsHeader() {
         <p className="text-3xl text-gray-600 normal-case">Manage your account and wellness preferences</p>
       </div>
 
-      <div className="flex items-center w-full gap-5 p-2 bg-gray-100 rounded-2xl">
-        {["profile", "notifications", "health", "privacy"].map((tab) => (
+      <div className="flex items-center gap-5 p-2 bg-gray-100 max-w-7xl rounded-2xl">
+        {["profile", "health", "privacy"].map((tab) => (
           <div
             key={tab}
             onClick={() => setActiveTab(tab)}
