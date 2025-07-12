@@ -1,8 +1,26 @@
+import { useState } from "react";
 import { IoSettingsOutline } from "react-icons/io5";
 import ProfileSettings from "./ProfileSettings";
 import HealthSettings from "./HealthSettings";
 
 export default function SettingsHeader() {
+  const [activeTab, setActiveTab] = useState("profile");
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "profile":
+        return <ProfileSettings />;
+      case "notifications":
+        return <div>Notifications settings coming soon.</div>;
+      case "health":
+        return <HealthSettings />;
+      case "privacy":
+        return <div>Privacy settings coming soon.</div>;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="w-full space-y-12">
       <div className="space-y-4">
@@ -13,24 +31,20 @@ export default function SettingsHeader() {
       </div>
 
       <div className="flex items-center w-full gap-5 p-2 bg-gray-100 rounded-2xl">
-        <div className="flex items-center justify-center w-full text-3xl font-semibold text-center bg-white shadow-lg cursor-pointer rounded-2xl p-7 hover:scale-95">
-          profile
-        </div>
-        <div className="flex items-center justify-center w-full text-3xl font-semibold text-center cursor-pointer rounded-2xl p-7 hover:scale-95">
-          notifications
-        </div>
-        <div className="flex items-center justify-center w-full text-3xl font-semibold text-center cursor-pointer rounded-2xl p-7 hover:scale-95">
-          health
-        </div>
-        <div className="flex items-center justify-center w-full text-3xl font-semibold text-center cursor-pointer rounded-2xl p-7 hover:scale-95">
-          privacy
-        </div>
+        {["profile", "notifications", "health", "privacy"].map((tab) => (
+          <div
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`flex items-center justify-center w-full text-3xl font-semibold text-center cursor-pointer rounded-2xl p-7 hover:scale-95 ${
+              activeTab === tab ? "bg-white shadow-lg" : ""
+            }`}
+          >
+            {tab}
+          </div>
+        ))}
       </div>
 
-      <div className="!mt-20">
-        <ProfileSettings />
-        <HealthSettings />
-      </div>
+      <div className="!mt-20">{renderContent()}</div>
     </div>
   );
 }
