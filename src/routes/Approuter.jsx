@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AppLayout from "../layouts/AppLayout";
-import Index from "../pages/Index";
 import ScrollToTop from "../components/ScrollToTop";
 import Dashboard_page from "../pages/Dashboard_page";
 import Assistant from "../pages/Assistant";

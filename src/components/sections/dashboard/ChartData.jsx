@@ -1,16 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Moon } from "lucide-react";
 import { BiPulse } from "react-icons/bi";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-} from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, BarChart, Bar } from "recharts";
 
 const ChartData = () => {
   const [sleepData, setSleepData] = useState([]);
@@ -69,9 +60,7 @@ const ChartData = () => {
             <Moon className="text-2xl text-blue-600" />
             Sleep Trend (7 days)
           </div>
-          <p className="text-xl font-semibold text-gray-500">
-            Your sleep hours over the past week
-          </p>
+          <p className="text-xl font-semibold text-gray-500">Your sleep hours over the past week</p>
         </div>
 
         <ResponsiveContainer width="100%" height={300}>
@@ -79,13 +68,7 @@ const ChartData = () => {
             <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
             <XAxis dataKey="day" axisLine={false} tickLine={false} />
             <YAxis axisLine={false} tickLine={false} />
-            <Line
-              type="monotone"
-              dataKey="hours"
-              stroke="#0ea5e9"
-              strokeWidth={3}
-              dot={{ fill: "#0ea5e9", strokeWidth: 2, r: 4 }}
-            />
+            <Line type="monotone" dataKey="hours" stroke="#0ea5e9" strokeWidth={3} dot={{ fill: "#0ea5e9", strokeWidth: 2, r: 4 }} />
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -97,9 +80,7 @@ const ChartData = () => {
             <BiPulse className="text-4xl text-purple-600" />
             Steps Progress
           </div>
-          <p className="text-xl font-semibold text-gray-500">
-            Daily step count this week
-          </p>
+          <p className="text-xl font-semibold text-gray-500">Daily step count this week</p>
         </div>
 
         <ResponsiveContainer width="100%" height={300}>

@@ -1,11 +1,10 @@
-import React from "react";
-import WelcomeMessage from "../components/section/dashboard/WelcomeMessage";
-import VitalCards from "../components/section/dashboard/VitalCards";
-import ChartData from "../components/section/dashboard/ChartData";
+import ChartData from "../components/sections/dashboard/ChartData";
+import VitalCards from "../components/sections/dashboard/VitalCards";
+import WelcomeMessage from "../components/sections/dashboard/WelcomeMessage";
 
 const Dashboard_page = () => {
   return (
-    <div className="w-full h-full px-12 bg-green-50">
+    <div className="w-full h-full">
       <WelcomeMessage />
       <VitalCards />
       <ChartData />
