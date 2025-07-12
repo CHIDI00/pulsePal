@@ -99,13 +99,21 @@ export default function ChatAssistant() {
   return (
     <div className="w-full h-screen p-16 transition-transform duration-300 bg-white rounded-2xl hover:-translate-y-4">
       <div className="flex flex-col justify-between h-full pb-10">
-        <div className="space-y-12 overflow-y-auto max-h-[70vh]">
+        <div className="space-y-12 max-h-[70vh]">
           <h3 className="flex items-center text-5xl font-semibold text-nowrap gap-7">
             <VscRobot className="text-blue-500 text-7xl" />
             AI Wellness Assistant
           </h3>
 
-          <div className="space-y-8">
+          <div
+            className="space-y-8 overflow-y-auto w-full max-h-[70vh] 
+                scrollbar-thin scrollbar-thumb-green-400 scrollbar-track-gray-100
+                pr-10" // Add right padding to prevent content clipping
+            style={{
+              scrollbarWidth: "thin",
+              scrollbarColor: "#4ade80 #f3f4f6",
+            }}
+          >
             {messages.map((message, index) => (
               <div key={index} className={`flex ${message.sender === "user" ? "justify-end" : ""}`}>
                 <div className={`flex items-start max-w-5xl gap-8 ${message.sender === "user" ? "flex-row-reverse" : ""}`}>
