@@ -12,7 +12,7 @@ export default function AppLayout() {
         </div>
         <div className="lg:flex-[8] w-full">
           <Header />
-          <main className="w-full h-full !py-10 !pb-36 bg-green-100 section-page">
+          <main className="w-full h-full !py-10 lg:!pb-0 !pb-36 bg-green-100 section-page">
             <Outlet />
           </main>
 
