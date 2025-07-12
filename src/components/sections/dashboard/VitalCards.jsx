@@ -158,7 +158,7 @@ const VitalCards = () => {
           / 10K
         </div>
         <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-3 text-xl font-semibold text-red-500">
+          <div className="flex items-center gap-3 text-xl font-semibold text-red-600">
             {stepsPercent >= 100 ? "Great job!" : "Let's walk more!"}
             <BiWalk />
           </div>
