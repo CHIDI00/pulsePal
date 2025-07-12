@@ -78,8 +78,17 @@ const ChartData = () => {
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={sleepData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
-            <XAxis dataKey="day" axisLine={false} tickLine={false} />
-            <YAxis axisLine={false} tickLine={false} />
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              tick={{ fontSize: 16, fill: "#334155", fontWeight: 600 }}
+            />
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              tick={{ fontSize: 16, fill: "#334155", fontWeight: 600 }}
+            />
             <Line
               type="monotone"
               dataKey="hours"
@@ -106,8 +115,17 @@ const ChartData = () => {
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={stepsData}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e0e7ff" />
-            <XAxis dataKey="day" axisLine={false} tickLine={false} />
-            <YAxis axisLine={false} tickLine={false} />
+            <XAxis
+              dataKey="day"
+              axisLine={false}
+              tickLine={false}
+              tick={{ fontSize: 16, fill: "#334155", fontWeight: 600 }}
+            />
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              tick={{ fontSize: 16, fill: "#334155", fontWeight: 600 }}
+            />
             <Bar dataKey="steps" fill="#a855f7" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
