@@ -36,7 +36,7 @@ const VitalCards = () => {
         console.error("GET request failed:", err);
         setLoading(false);
       });
-  }, [vitals, setVitals]);
+  }, []);
 
   if (loading) return <Loader />;
 
