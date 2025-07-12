@@ -110,7 +110,9 @@ export default function ChatAssistant() {
               <div key={index} className={`flex ${message.sender === "user" ? "justify-end" : ""}`}>
                 <div className={`flex items-start max-w-5xl gap-8 ${message.sender === "user" ? "flex-row-reverse" : ""}`}>
                   {message.sender === "bot" ? (
-                    <VscRobot className="p-3 text-white rounded-full text-7xl bg-gradient-to-tr from-green-500 to-green-300" />
+                    <div>
+                      <VscRobot className="p-3 text-white rounded-full text-7xl bg-gradient-to-tr from-green-500 to-green-300" />
+                    </div>
                   ) : (
                     <FaUserCircle className="p-3 text-white rounded-full text-7xl bg-gradient-to-r from-purple-500 to-pink-400" />
                   )}
