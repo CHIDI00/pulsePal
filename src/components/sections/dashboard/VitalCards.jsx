@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { GrSteps } from "react-icons/gr";
 import { BiWalk } from "react-icons/bi";
+import Loader from "../../ui/Loader";
 
 const VitalCards = () => {
   const [vitals, setVitals] = useState(null);
@@ -35,10 +36,19 @@ const VitalCards = () => {
         console.error("GET request failed:", err);
         setLoading(false);
       });
-  }, []);
+  }, [vitals, setVitals]);
 
-  if (loading) return <p>Loading vitals...</p>;
-  if (!vitals) return <p>No health data available.</p>;
+  if (loading) return <Loader />;
+
+  if (!vitals)
+    return (
+      <div className="flex items-center justify-center w-full py-10">
+        <p className="text-2xl font-bold text-red-600">
+          {" "}
+          No health data available.
+        </p>
+      </div>
+    );
 
   const hydrationTarget = 2.5; // Liters
   const stepsTarget = 10000; // Steps

@@ -61,7 +61,10 @@ export default function ChatAssistant() {
     const userMessage = {
       sender: "user",
       text: inputMessage,
-      time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
     };
 
     setMessages((prev) => [...prev, userMessage]);
@@ -91,7 +94,10 @@ export default function ChatAssistant() {
         sender: "bot",
         text: data.response,
         healthData: data.healthDataUsed,
-        time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
       };
 
       setMessages((prev) => [...prev, botMessage]);
@@ -102,7 +108,10 @@ export default function ChatAssistant() {
         {
           sender: "bot",
           text: getErrorMessage(error),
-          time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+          time: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
         },
       ]);
     } finally {
@@ -135,12 +144,15 @@ export default function ChatAssistant() {
     <div className="w-full h-screen p-16 transition-transform duration-300 bg-white rounded-2xl hover:-translate-y-4">
       <div className="flex flex-col justify-between h-full pb-10">
         <div className="space-y-12 max-h-[70vh]">
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             <h3 className="flex items-center text-5xl font-semibold text-nowrap gap-7">
               <VscRobot className="text-blue-500 text-7xl" />
               AI Wellness Assistant
             </h3>
-            <button onClick={clearChatHistory} className="px-4 py-2 bg-red-500 text-white rounded-lg text-xl">
+            <button
+              onClick={clearChatHistory}
+              className="px-4 py-2 text-xl text-white bg-red-500 rounded-lg"
+            >
               Clear History
             </button>
           </div>
@@ -155,8 +167,17 @@ export default function ChatAssistant() {
             }}
           >
             {messages.map((message, index) => (
-              <div key={index} className={`flex ${message.sender === "user" ? "justify-end" : ""}`}>
-                <div className={`flex items-start max-w-5xl gap-8 ${message.sender === "user" ? "flex-row-reverse" : ""}`}>
+              <div
+                key={index}
+                className={`flex ${
+                  message.sender === "user" ? "justify-end" : ""
+                }`}
+              >
+                <div
+                  className={`flex items-start max-w-5xl gap-8 ${
+                    message.sender === "user" ? "flex-row-reverse" : ""
+                  }`}
+                >
                   {message.sender === "bot" ? (
                     <div>
                       <VscRobot className="p-3 text-white rounded-full text-7xl bg-gradient-to-tr from-green-500 to-green-300" />
@@ -166,10 +187,14 @@ export default function ChatAssistant() {
                   )}
                   <div
                     className={`rounded-2xl p-7 ${
-                      message.sender === "bot" ? "bg-gray-100" : "text-white bg-gradient-to-tr from-green-500 to-green-300"
+                      message.sender === "bot"
+                        ? "bg-gray-100"
+                        : "text-white bg-gradient-to-tr from-green-500 to-green-300"
                     }`}
                   >
-                    <p className="text-3xl font-medium normal-case break-words whitespace-pre-wrap">{message.text}</p>
+                    <p className="text-3xl font-medium normal-case break-words whitespace-pre-wrap">
+                      {message.text}
+                    </p>
                     <br />
                     <small className="text-2xl">{message.time}</small>
                   </div>
@@ -180,8 +205,20 @@ export default function ChatAssistant() {
               <div className="flex">
                 <div className="flex items-start max-w-5xl gap-8">
                   <VscRobot className="p-3 text-white rounded-full text-7xl bg-gradient-to-tr from-green-500 to-green-300" />
-                  <div className="bg-gray-100 rounded-2xl p-7">
-                    <p className="text-3xl font-medium normal-case">Thinking...</p>
+                  <div className="bg-gray-100 rounded-2xl p-7 text-[#494949]">
+                    <div
+                      className="mx-auto animate-loaderAnim"
+                      style={{
+                        width: "50px",
+                        aspectRatio: "2",
+                        background: `
+      no-repeat radial-gradient(circle closest-side, #000 90%, #0000) 0% 50%,
+      no-repeat radial-gradient(circle closest-side, #000 90%, #0000) 50% 50%,
+      no-repeat radial-gradient(circle closest-side, #000 90%, #0000) 100% 50%
+    `,
+                        backgroundSize: "calc(100% / 3) 50%",
+                      }}
+                    />
                   </div>
                 </div>
               </div>
