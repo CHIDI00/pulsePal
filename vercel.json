@@ -11,5 +11,12 @@
         }
       ]
     }
+  ],
+  "routes": [
+    {
+      "src": "/api/ai",
+      "methods": ["OPTIONS"],
+      "dest": "/api/ai"
+    }
   ]
 }
