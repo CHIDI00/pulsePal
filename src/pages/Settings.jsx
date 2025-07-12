@@ -1,6 +1,6 @@
 export default function Settings() {
   return (
-    <div className="">
+    <div className="w-full">
       <div className=""></div>
     </div>
   );
